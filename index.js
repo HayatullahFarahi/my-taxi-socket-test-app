@@ -20,12 +20,12 @@ socketio.on("connection", (userSocket) => {
     console.log("new connection")
     userSocket.on("send_message", (data) => {
         userSocket.broadcast.emit("receive_message", data.message)
-        console.log(data.test);
+        console.log(data.body);
     })
 })
 const port = process.env.PORT || 5000;
 
-http
-.listen(port, ()=>{
+
+http.listen(port, ()=>{
     console.log(`server running on port ${port}`)
 })
