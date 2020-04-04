@@ -20,7 +20,7 @@ socketio.on("connection", (userSocket) => {
     console.log("new connection")
     userSocket.on("send_message", (data) => {
         userSocket.broadcast.emit("receive_message", data.message)
-        console.log(data.body);
+        console.log(data);
     })
 })
 const port = process.env.PORT || 5000;
