@@ -21,7 +21,7 @@ socketio.on("connection", (userSocket) => {
     userSocket.on("send_message", (data) => {
         userSocket.broadcast.emit("receive_message", data)
         console.log(data);
-        userSocket.emit("receive_request", data)
+        socketio.emit("receive_request", data)
         console.log(data);
     })
 })
