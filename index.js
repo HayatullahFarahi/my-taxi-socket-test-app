@@ -28,7 +28,7 @@ wsServer.on('request', function(request) {
         }
     })
     connection.on('close',  function(reasonCode, description){
-        console.log((new Date())  + 'peer' + connection.remoteAddress + ' disconnected')
+        // console.log((new Date())  + 'peer' + connection.remoteAddress + ' disconnected')
     })
 
 
