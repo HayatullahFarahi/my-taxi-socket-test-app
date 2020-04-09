@@ -5,6 +5,7 @@ const fs = require('fs')
 const WebSocketServer = require('websocket').server;
 
 const msg = []
+const requests = []
 
 
 // wsServer = new WebSocketServer({
@@ -50,7 +51,8 @@ const socketio = require('socket.io')(http)
 socketio.on("connection", (userSocket) => {
     console.log("new connection")
     userSocket.on("send_message", (data) => {
-        userSocket.broadcast.emit("receive_message", data)
+        requests.push(data)
+        userSocket.broadcast.emit("receive_message", requests)
         console.log(data);
         socketio.emit("receive_request", data)
         console.log(data);
