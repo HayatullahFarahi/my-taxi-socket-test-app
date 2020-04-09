@@ -52,7 +52,7 @@ socketio.on("connection", (userSocket) => {
     console.log("new connection")
     userSocket.on("send_message", (data) => {
         requests.push(data)
-        userSocket.broadcast.emit("receive_message", requests)
+        userSocket.broadcast.emit("receive_message", data)
         console.log(data);
         socketio.emit("receive_request", data)
         console.log(data);
