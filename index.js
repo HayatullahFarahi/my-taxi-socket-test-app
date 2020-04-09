@@ -53,7 +53,6 @@ socketio.on("connection", (userSocket) => {
         userSocket.broadcast.emit("receive_message", data)
         console.log(data);
         socketio.emit("receive_request", data)
-        userSocket.embeds("receive_request", data)
         console.log(data);
     })
 })
