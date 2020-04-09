@@ -15,10 +15,11 @@ socketio.on("connection", (userSocket) => {
         userSocket.broadcast.emit("receive_message", data)
     })
 })
+const port = process.env.PORT || 5000;
 
-const port = process.env.PORT
+
 http.listen(port, ()=>{
-    console.log(`listening on port ${PORT}`)
+    console.log(`server running on port ${port}`)
 })
 
 
