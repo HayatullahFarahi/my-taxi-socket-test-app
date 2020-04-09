@@ -7,32 +7,32 @@ const WebSocketServer = require('websocket').server;
 const msg = []
 
 
-wsServer = new WebSocketServer({
-    httpServer: http,
-    // You should not use autoAcceptConnections for production
-    // applications, as it defeats all standard cross-origin protection
-    // facilities built into the protocol and the browser.  You should
-    // *always* verify the connection's origin and decide whether or not
-    // to accept it.
-                // autoAcceptConnections: false
-})
+// wsServer = new WebSocketServer({
+//     httpServer: http,
+//     // You should not use autoAcceptConnections for production
+//     // applications, as it defeats all standard cross-origin protection
+//     // facilities built into the protocol and the browser.  You should
+//     // *always* verify the connection's origin and decide whether or not
+//     // to accept it.
+//                 // autoAcceptConnections: false
+// })
 
-wsServer.on('request', function(request) {
-    const connection = request.accept(null, request.origin)
-    connection.on('message', function(message) {
-        if(message.type === 'utf8'){
-            console.log("Recived message:" + message.utf8Data)
-            msg.push(`${message.utf8Data}`)
-            console.log(msg)
-            connection.send(message.utf8Data)
-        }
-    })
-    connection.on('close',  function(reasonCode, description){
-        // console.log((new Date())  + 'peer' + connection.remoteAddress + ' disconnected')
-    })
+// wsServer.on('request', function(request) {
+//     const connection = request.accept(null, request.origin)
+//     connection.on('message', function(message) {
+//         if(message.type === 'utf8'){
+//             console.log("Recived message:" + message.utf8Data)
+//             msg.push(`${message.utf8Data}`)
+//             console.log(msg)
+//             connection.send(message.utf8Data)
+//         }
+//     })
+//     connection.on('close',  function(reasonCode, description){
+//         // console.log((new Date())  + 'peer' + connection.remoteAddress + ' disconnected')
+//     })
 
 
-})
+// })
 
 const options = {
     key: fs.readFileSync('key.pem'),
