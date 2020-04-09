@@ -10,12 +10,16 @@ app.get('/', (req, res) => {
 const socketio = require('socket.io')(http)
 
 socketio.on("connection", (userSocket) => {
+    console.log("New Socket Connection")
     userSocket.on("send_message", (data) => {
         userSocket.broadcast.emit("receive_message", data)
     })
 })
 
-http.listen(process.env.PORT)
+const port = process.env.PORT
+http.listen(port, ()=>{
+    console.log(`listening on port ${PORT}`)
+})
 
 
 
