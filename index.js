@@ -64,7 +64,7 @@ socketio.on("connection", (userSocket) => {
         console.log(data);
     })
 
-    userSokcet.on("send_location", (data)=>{
+    userSocket.on("send_location", (data)=>{
         userSocket.broadcast.emit("receive_location", data)
     })
 })
