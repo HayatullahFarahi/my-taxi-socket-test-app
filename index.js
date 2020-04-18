@@ -64,10 +64,12 @@ socketio.on("connection", (userSocket) => {
     })
 
     userSocket.on("send_location", (data)=>{
+        console.log("send location socket called")
         userSocket.broadcast.emit("receive_location", data)
     })
 
     userSocket.on("send_driver_marker", (data)=>{
+        console.log("send_driver_marker socket called")
         userSocket.broadcast.emit("receive_driver_marker", data)
     })
 
