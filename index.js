@@ -66,6 +66,11 @@ socketio.on("connection", (userSocket) => {
     userSocket.on("send_location", (data)=>{
         userSocket.broadcast.emit("receive_location", data)
     })
+
+    userSocket.on("send_driver_marker", (data)=>{
+        userSocket.broadcast.emit("receive_driver_marker", data)
+    })
+
 })
 const port = process.env.PORT || 5000;
 // const port =  5000;
