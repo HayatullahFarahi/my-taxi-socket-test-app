@@ -68,11 +68,11 @@ socketio.on("connection", (userSocket) => {
         console.log("send location socket called")
         // add drivers to list of drivers
         const {error, driver} = addDriver({id: userSocket.id, lat: data.lat, long: data.long, heading: data.heading, accuracy: data.accuracy})
-        if(error){
-            console.log('error', error)
-        }
-        console.log(`added driver ${driver}`)
-        console.log(`online drivers ${drivers}`)
+            // if(error){
+            //     console.log('error', error)
+            // }
+            // console.log(`added driver ${driver}`)
+        console.log(`online drivers ${drivers[0]}`)
         userSocket.broadcast.emit("receive_location", data)
     })
 
