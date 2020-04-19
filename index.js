@@ -3,6 +3,7 @@ const http = require('http').createServer(app)
 const https = require('https')
 const fs = require('fs')
 const WebSocketServer = require('websocket').server;
+const { addDriver, removeDriver, getDriver, drivers } = require('./utils/drivers')
 
 const msg = []
 const requests = []
@@ -55,7 +56,7 @@ const socketio = require('socket.io')(http)
 
 socketio.on("connection", (userSocket) => {
     console.log("new connection")
-
+    
     userSocket.on("send_message", (data) => {
         requests.push(data)
         userSocket.broadcast.emit("receive_message", data)
@@ -65,6 +66,10 @@ socketio.on("connection", (userSocket) => {
 
     userSocket.on("send_location", (data)=>{
         console.log("send location socket called")
+        // add drivers to list of drivers
+        const {error, driver} = addDriver({id: userSocket.id, lat: data.lat, long: data.long, heading: data.heading, accuracy: data.accuracy})
+        console.log(`added driver ${driver}`)
+        console.log(`online drivers ${drivers}`)
         userSocket.broadcast.emit("receive_location", data)
     })
 
