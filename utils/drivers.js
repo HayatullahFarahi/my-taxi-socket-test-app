@@ -44,6 +44,13 @@ const getDriver = (id) =>{
     return drivers.find((driver)=> driver.id === id)
 }
 
+
+const driver = addDriver({id: 123, lat: 123.4,  long: 23.0, heading: 234.9, accuracy: 23.0})
+const driver2 = addDriver({id: 1234, lat: 123.4,  long: 23.0, heading: 234.9, accuracy: 23.0})
+console.log(drivers)
+const driver3 = getDriver(123)
+console.log(driver3)
+
 module.exports = {
     addDriver,
     removeDriver,

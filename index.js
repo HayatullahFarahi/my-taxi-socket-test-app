@@ -72,7 +72,8 @@ socketio.on("connection", (userSocket) => {
             //     console.log('error', error)
             // }
             // console.log(`added driver ${driver}`)
-        console.log(`online drivers ${drivers[0]}`)
+        console.log(`online drivers}`)
+        console.log(drivers)
         userSocket.broadcast.emit("receive_location", data)
     })
 
