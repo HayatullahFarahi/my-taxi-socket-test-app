@@ -82,6 +82,12 @@ socketio.on("connection", (userSocket) => {
         userSocket.broadcast.emit("receive_driver_marker", data)
     })
 
+    userSocket.on("disconnect", ()=>{
+        const driver = removeDriver(userSocket.id)
+        if(driver){
+            console.log('driver disconnect id:', driver.id)
+        }
+    })
 })
 const port = process.env.PORT || 5000;
 // const port =  5000;
