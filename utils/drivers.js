@@ -1,3 +1,5 @@
+//this file will save all the online driver locations with their socket IDs
+
 const drivers = []
 
 const addDriver = ({id, lat, long, heading, accuracy}) => {
