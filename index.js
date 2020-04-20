@@ -75,9 +75,8 @@ socketio.on("connection", (userSocket) => {
         console.log(`online drivers}`)
         console.log(drivers)
         //testing instead of data we will send drivers array to customer app 
-        // if(drivers)
-        //     userSocket.broadcast.emit("receive_location", drivers)
-        userSocket.broadcast.emit("receive_location", data)
+        if(drivers)
+            userSocket.broadcast.emit("receive_location", drivers)
     })
 
     userSocket.on("send_driver_marker", (data)=>{
