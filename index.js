@@ -91,6 +91,7 @@ socketio.on("connection", (userSocket) => {
         if(driver){
             console.log('driver disconnect id:', driver.id)
         }
+        userSocket.broadcast.emot("driver_disconnect", userSocket.id)
     })
 })
 const port = process.env.PORT || 5000;
