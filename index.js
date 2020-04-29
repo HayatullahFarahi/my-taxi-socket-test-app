@@ -86,13 +86,22 @@ socketio.on("connection", (userSocket) => {
         userSocket.broadcast.emit("receive_driver_marker", data)
     })
 
+    userSocket.on("drop_customer", (data)=>{
+        console.log("drop_customer", data)
+        userSocket.broadcast.emit("drop_customer_done", data)
+    })
+
     userSocket.on("disconnect", ()=>{
+
+        userSocket.broadcast.emit("driver_disconnect", userSocket.id)
+
+        console.log(`driver disconnected ${userSocket.id}`)
         const driver = removeDriver(userSocket.id)
+        
         if(driver){
             console.log('driver disconnect id:', driver.id)
         }
-        userSocket.broadcast.emit("driver_disconnect", userSocket.id)
-        console.log(`driver disconnected ${userSocket.id}`)
+       
     })
 })
 const port = process.env.PORT || 5000;
