@@ -67,6 +67,11 @@ socketio.on("connection", (userSocket) => {
     socketio.emit("receive_request", data);
   });
 
+  userSocket.on("send_request_crane", (data) => {
+    console.log("send request crane", data);
+    userSocket.broadcast.emit("receive_request_crane", data);
+  });
+
   userSocket.on("send_location", (data) => {
     console.log("send location socket called");
     // add drivers to list of drivers
@@ -83,7 +88,7 @@ socketio.on("connection", (userSocket) => {
     // console.log(`added driver ${driver}`)
     console.log(`online drivers}`);
     console.log(drivers);
-    data.id = userSocket.id;
+    data.driver_socket_id = userSocket.id;
     userSocket.broadcast.emit("receive_location", data);
     //testing instead of data we will send drivers array to customer app
     // if(drivers)
